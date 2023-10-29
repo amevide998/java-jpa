@@ -32,4 +32,27 @@ public class ColumnTest {
 
         entityTransaction.commit();
     }
+
+
+    @Test
+    void transientTest(){
+        EntityManagerFactory entityManagerFactory = JpaUtils.getEntityManagerFactory();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+
+        entityTransaction.begin();
+
+        Customer customer = new Customer();
+        customer.setId(UUID.randomUUID().toString());
+        customer.setName("amevide");
+        customer.setPrimaryEmail("amevide@gmail.com");
+        customer.setFullname("amevide fullname");
+
+        entityManager.persist(customer);
+
+        Customer dbCustomer = entityManager.find(Customer.class, customer.getId());
+        Assertions.assertNotNull(dbCustomer);
+
+        entityTransaction.commit();
+    }
 }

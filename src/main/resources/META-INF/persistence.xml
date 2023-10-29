@@ -10,6 +10,8 @@
 
     <class>com.hdscode.jpa.entity.Customer</class>
     <class>com.hdscode.jpa.entity.Category</class>
+    <class>com.hdscode.jpa.entity.Image</class>
+    <class>com.hdscode.jpa.entity.Member</class>
 
 
     <properties>
